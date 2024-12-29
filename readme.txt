@@ -1,3 +1,2 @@
-init readme
-pt2
-pt3
+playground for auto pushing/pulling, handling .env variables, gitignore, etc
+I just such at github commands lol
