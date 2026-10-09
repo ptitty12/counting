@@ -1,0 +1,12 @@
+# Deployed by Dokploy (project "counting"). A Dokploy Schedule runs `bash run.sh` in this container a few times a day.
+# /data/ssh holds a dedicated deploy key for the counting repo (generated on the server, not root's key).
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    environment:
+      - REPO_PATH=/data/repo
+      - TZ=America/New_York
+      - GIT_SSH_COMMAND=ssh -i /data/ssh/id_ed25519 -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/data/ssh/known_hosts
+    volumes:
+      - /root/projects/_data/counting:/data
